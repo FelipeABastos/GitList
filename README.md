@@ -21,9 +21,8 @@ Ao abrir o Xcode, o app irá carregar os packages através do Swift Package Mana
 - VIPER
 - View Code
 - URL Session
-- Dependency Injection
-
-✅ XCTest: Unit & UI
+- Injeção de Dependência
+- XCTest: Unit & UI
 ```
 
 ## Swift Package Manager
