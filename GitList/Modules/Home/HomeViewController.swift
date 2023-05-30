@@ -56,7 +56,9 @@ final class HomeViewController: UIViewController,
     func updateSearchResults(for searchController: UISearchController) {}
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        presenter.getSpecificUser(userName: searchBar.text ?? "")
+        if let searchText = searchBar.text {
+            presenter.getSpecificUser(userName: searchText)
+        }
     }
     
     //-----------------------------------------------------------------------

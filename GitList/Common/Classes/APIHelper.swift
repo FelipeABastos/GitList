@@ -32,7 +32,7 @@ final class APIHelper {
         //  Running tests
         //---------------------------------------------------------
         
-        if Preferences.preferenceIsRunningTests { // Change to is Running Tests
+        if Preferences.preferenceIsRunningTests {
             if Preferences.isRunningTestsFail {
                 completion(nil, APIResponseError(documentationUrl: "DocumentationTest", message: "ErrorTest"))
             }else{

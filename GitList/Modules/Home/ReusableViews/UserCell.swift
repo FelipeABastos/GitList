@@ -56,7 +56,10 @@ final class UserCell: UITableViewCell, ViewCode {
         backgroundColor = .clear
         selectionStyle = .none
         
-        imgIcon.kf.setImage(with: URL(string: item.avatar ?? ""))
+        if let avatar = item.avatar {
+            imgIcon.kf.setImage(with: URL(string: avatar))
+        }
+        
         lblTitle.text = item.login
     }
     
@@ -71,8 +74,8 @@ final class UserCell: UITableViewCell, ViewCode {
     
     internal func buildHierarchy() {
         addSubview(vwBackground)
-        addSubview(lblTitle)
-        addSubview(imgIcon)
+        vwBackground.addSubview(lblTitle)
+        vwBackground.addSubview(imgIcon)
         addSubview(vwSeparator)
     }
     

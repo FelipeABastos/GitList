@@ -18,6 +18,7 @@ final class DetailView: UIView,
     
     private lazy var imgAvatar: UIImageView = {
         let image = UIImageView()
+        image.accessibilityIdentifier = Constants.AccessibilityIdentifier.Detail.AvatarImage
         image.layer.cornerRadius = 80
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -75,8 +76,13 @@ final class DetailView: UIView,
             tbList.reloadData()
         }
         
-        imgAvatar.kf.setImage(with: URL(string: user.avatar ?? ""))
-        lblName.text = user.name ?? ""
+        if let avatar = user.avatar {
+            imgAvatar.kf.setImage(with: URL(string: avatar))
+        }
+        
+        if let userName = user.name {
+            lblName.text = userName
+        }
     }
     
     //-----------------------------------------------------------------------

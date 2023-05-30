@@ -19,12 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //-----------------------------------
-        //  Loading Mocks
-        //-----------------------------------
         
         Preferences.preferenceIsRunningTests = true
-        Preferences.isRunningTestsFail = false
         
         //-----------------------------------
         //  BaseRouter

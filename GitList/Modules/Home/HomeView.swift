@@ -111,10 +111,10 @@ final class HomeView: UIView,
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        guard let lastUser = self.users.last?.id else { return }
-        
-        if indexPath.row == self.users.count - 5 {
-            delegate.loadMoreData(since: lastUser)
+        if let lastUser = self.users.last?.id {
+            if indexPath.row == self.users.count - 5 {
+                delegate.loadMoreData(since: lastUser)
+            }
         }
     }
 

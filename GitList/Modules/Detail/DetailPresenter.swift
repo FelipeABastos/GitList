@@ -39,7 +39,9 @@ final class DetailPresenter {
                     self.repositories = items
                     self.delegate?.loadedData()
                 }else{
-                    NotificationTopBanner.showMessage(message: error?.message ?? Constants.Messages.UnknownError, type: .warning)
+                    if let errorMessage = error?.message {
+                        NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
+                    }
                 }
             }
         }

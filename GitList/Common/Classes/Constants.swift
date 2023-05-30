@@ -48,6 +48,7 @@ final class Constants {
         }
         
         struct Detail {
+            static let AvatarImage = "Detail_AvatarImage"
             static let NameLabel = "Detail_NameLabel"
             static let SeparatorView = "Detail_SeparatorView"
             static let RepositoriesLabel = "Detail_RepositoriesLabel"
