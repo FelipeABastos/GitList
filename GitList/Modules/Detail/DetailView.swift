@@ -84,10 +84,6 @@ final class DetailView: UIView,
         
         tbList.reloadData()
         
-        if repositories.count == 0 {
-            // TODO: Add a placeholder
-        }
-        
         if let avatar = user.avatar {
             imgAvatar.kf.setImage(with: URL(string: avatar))
         }
