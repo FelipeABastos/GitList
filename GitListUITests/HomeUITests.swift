@@ -1,5 +1,5 @@
 //
-//  GitListUITests.swift
+//  HomeUITests.swift
 //  GitListUITests
 //
 //  Created by Felipe Amorim Bastos on 25/05/23.
@@ -8,14 +8,7 @@
 import XCTest
 @testable import GitList
 
-final class HomeUITests: XCTestCase {
-    
-    private let app = XCUIApplication()
-    
-    func launchApp() {
-        app.launchArguments = ["-isTesting", "-isTestingUI"]
-        app.launch()
-    }
+final class HomeUITests: UITests {
     
     func testIfTableViewExists() {
         launchApp()

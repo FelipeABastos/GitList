@@ -7,11 +7,13 @@
 
 import Foundation
 
-class Mock {
+final class Mock {
     
     let fileManager = FileManager()
     
     static let shared = Mock()
+    
+    private init() {}
     
     func load(type: MockType) -> Data? {
         var data: Data? = nil
@@ -26,9 +28,9 @@ class Mock {
     private func log(_ data: Data?, _ mock: String) {
         if let aux = data,
             let response = String(data: aux, encoding: String.Encoding.utf8) {
-            print("\n==================== Loading Mock: \(mock) ====================\n")
-            print(response)
-            print("\n===============================================================\n")
+            debugPrint("\n==================== Loading Mock: \(mock) ====================\n")
+            debugPrint(response)
+            debugPrint("\n===============================================================\n")
         }
     }
 }

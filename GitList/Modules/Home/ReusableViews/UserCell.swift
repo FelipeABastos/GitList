@@ -47,7 +47,7 @@ final class UserCell: UITableViewCell, ViewCode {
     }()
     
     //-----------------------------------------------------------------------
-    //  MARK: - Custom Methods
+    //  MARK: - Custom Methods -
     //-----------------------------------------------------------------------
     
     func loadUI(item: User) {
@@ -65,7 +65,7 @@ final class UserCell: UITableViewCell, ViewCode {
     }
     
     //-----------------------------------------------------------------------
-    //  MARK: - ViewCode Protocol
+    //  MARK: - ViewCode Protocol -
     //-----------------------------------------------------------------------
     
     func setup() {

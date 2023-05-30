@@ -13,8 +13,8 @@ final class DetailView: UIView,
                         UITableViewDataSource,
                         UITableViewDelegate {
     
-    var user: User!
-    var repositories: [Repository] = []
+    private var user: User!
+    private var repositories: [Repository] = []
     
     private lazy var imgAvatar: UIImageView = {
         let image = UIImageView()
@@ -64,16 +64,28 @@ final class DetailView: UIView,
         return tableView
     }()
     
+    init(user: User!) {
+        super.init(frame: .zero)
+        self.user = user
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //-----------------------------------------------------------------------
-    //  MARK: - Custom Methods
+    //  MARK: - Custom Methods -
     //-----------------------------------------------------------------------
     
-    func update(user: User, repositories: [Repository] = []) {
-        self.repositories = repositories
-        self.user = user
+    func update(repositories: [Repository] = []) {
         
-        if repositories.count > 0 {
-            tbList.reloadData()
+        self.repositories = repositories
+        
+        tbList.reloadData()
+        
+        if repositories.count == 0 {
+            // TODO: Add a placeholder
         }
         
         if let avatar = user.avatar {
@@ -86,7 +98,7 @@ final class DetailView: UIView,
     }
     
     //-----------------------------------------------------------------------
-    //  MARK: - ViewCode Protocol
+    //  MARK: - ViewCode Protocol -
     //-----------------------------------------------------------------------
     
     func setup() {
@@ -137,18 +149,21 @@ final class DetailView: UIView,
     }
     
     //-----------------------------------------------------------------------
-    //    MARK: UITableView Delegate / Datasource
+    //  MARK: - UITableView Delegate / Datasource -
     //-----------------------------------------------------------------------
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return repositories.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let repository = repositories[indexPath.row]
         

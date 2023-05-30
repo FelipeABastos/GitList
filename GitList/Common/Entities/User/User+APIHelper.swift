@@ -29,9 +29,9 @@ extension User {
         }
     }
     
-    static func loadSpecificUser(userName: String,
-                                 _ completion: @escaping (_ result: User?,
-                                                          _ error: APIResponseError?) -> Void) {
+    static func loadUser(userName: String,
+                         _ completion: @escaping (_ result: User?,
+                                                  _ error: APIResponseError?) -> Void) {
         
         APIHelper.request(endpoint: Constants.API.Endpoint.Users + "/\(userName)",
                           parameters: [:],

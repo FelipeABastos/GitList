@@ -8,7 +8,7 @@
 import UIKit
 
 //-----------------------------------------------------------------------
-//  MARK: - Presenter Delegate
+//  MARK: - Presenter Delegate -
 //-----------------------------------------------------------------------
 
 protocol DetailPresenterDelegate {
@@ -17,7 +17,7 @@ protocol DetailPresenterDelegate {
 }
 
 //-----------------------------------------------------------------------
-//  MARK: - Presenter
+//  MARK: - Presenter -
 //-----------------------------------------------------------------------
 
 final class DetailPresenter {
@@ -30,7 +30,7 @@ final class DetailPresenter {
         self.delegate = delegate
     }
     
-    func getRepos() {
+    func loadRepositories() {
         if let login = user.login {
             delegate?.loading(true)
             Repository.loadAll(login: login) { result, error in
@@ -40,7 +40,8 @@ final class DetailPresenter {
                     self.delegate?.loadedData()
                 }else{
                     if let errorMessage = error?.message {
-                        NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
+                        NotificationTopBanner.showMessage(message: errorMessage,
+                                                          type: .warning)
                     }
                 }
             }

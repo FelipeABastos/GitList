@@ -16,8 +16,9 @@ protocol HomePresenterDelegate {
 }
 
 //-----------------------------------------------------------------------
-//  MARK: - Presenter
+//  MARK: - Presenter -
 //-----------------------------------------------------------------------
+
 final class HomePresenter {
     
     var delegate: HomePresenterDelegate?
@@ -46,7 +47,8 @@ final class HomePresenter {
         }
     }
     
-    private func getUsers(since: Int = 0, completion: @escaping (_ items: [User]) -> Void) {
+    private func getUsers(since: Int = 0,
+                          completion: @escaping (_ items: [User]) -> Void) {
         self.delegate?.loading(true)
         User.loadAll(since: since) { result, error in
             self.delegate?.loading(false)
@@ -54,27 +56,27 @@ final class HomePresenter {
                 completion(items)
             }else{
                 if let errorMessage = error?.message {
-                    NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
+                    NotificationTopBanner.showMessage(message: errorMessage,
+                                                      type: .warning)
                 }
                 completion([])
             }
         }
     }
     
-    func getSpecificUser(userName: String) {
-        
+    func loadUser(userName: String) {
         self.delegate?.loading(true)
-        User.loadSpecificUser(userName: userName) { result, error in
+        User.loadUser(userName: userName) { result, error in
             self.delegate?.loading(false)
             if let user = result {
                 Router.showDetail(user: user)
-                self.delegate?.dismissSearchBar()
             }else{
                 if let errorMessage = error?.message {
-                    NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
+                    NotificationTopBanner.showMessage(message: errorMessage,
+                                                      type: .warning)
                 }
-                self.delegate?.dismissSearchBar()
             }
+            self.delegate?.dismissSearchBar()
         }
     }
 }

@@ -13,8 +13,7 @@ final class DetailViewController: UIViewController,
     var presenter: DetailPresenter!
     
     private lazy var rootView: DetailView = {
-        let view = DetailView()
-        view.setup()
+        let view = DetailView(user: presenter.user)
         return view
     }()
     
@@ -24,7 +23,6 @@ final class DetailViewController: UIViewController,
     
     override func loadView() {
         view = rootView
-        rootView.update(user: presenter.user)
     }
     
     override func viewDidLoad() {
@@ -36,7 +34,7 @@ final class DetailViewController: UIViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter.getRepos()
+        presenter.loadRepositories()
     }
     
     //-----------------------------------------------------------------------
@@ -44,7 +42,7 @@ final class DetailViewController: UIViewController,
     //-----------------------------------------------------------------------
 
     func loadedData() {
-        rootView.update(user: presenter.user, repositories: presenter.repositories)
+        rootView.update(repositories: presenter.repositories)
     }
 
     func loading(_ loading: Bool) {

@@ -17,7 +17,7 @@ final class HomeView: UIView,
                       ViewCode,
                       UITableViewDelegate,
                       UITableViewDataSource,
-                      UISearchBarDelegate{
+                      UISearchBarDelegate {
     
     var delegate: HomeViewDelegate!
     
@@ -44,8 +44,18 @@ final class HomeView: UIView,
         return tableView
     }()
     
+    init(delegate: HomeViewDelegate) {
+        super.init(frame: .zero)
+        self.delegate = delegate
+        self.setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //-----------------------------------------------------------------------
-    //  MARK: - Custom Methods
+    //  MARK: - Custom Methods -
     //-----------------------------------------------------------------------
     
     func update(data: [User]) {
@@ -60,10 +70,10 @@ final class HomeView: UIView,
     }
     
     //-----------------------------------------------------------------------
-    //  MARK: - ViewCode Protocol
+    //  MARK: - ViewCode Protocol -
     //-----------------------------------------------------------------------
     
-    func setup() {
+    internal func setup() {
         backgroundColor = .black
         buildHierarchy()
         addConstraints()
@@ -84,7 +94,7 @@ final class HomeView: UIView,
     }
     
     //-----------------------------------------------------------------------
-    //  MARK: - UITableView Delegate / Datasource
+    //  MARK: - UITableView Delegate / Datasource -
     //-----------------------------------------------------------------------
     
     func tableView(_ tableView: UITableView,
@@ -109,7 +119,9 @@ final class HomeView: UIView,
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath) {
         
         if let lastUser = self.users.last?.id {
             if indexPath.row == self.users.count - 5 {

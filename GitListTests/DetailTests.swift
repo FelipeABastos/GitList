@@ -8,7 +8,7 @@
 import XCTest
 @testable import GitList
 
-class DetailTests: XCTestCase {
+final class DetailTests: XCTestCase {
 
     private let presenter = DetailPresenter(delegate: nil)
     
@@ -16,7 +16,7 @@ class DetailTests: XCTestCase {
         Preferences.isRunningTestsFail = false
         presenter.user = User()
         presenter.user.login = ""
-        presenter.getRepos()
+        presenter.loadRepositories()
         XCTAssertGreaterThan(presenter.repositories.count, 0)
     }
     
@@ -24,7 +24,7 @@ class DetailTests: XCTestCase {
         Preferences.isRunningTestsFail = true
         presenter.user = User()
         presenter.user.login = ""
-        presenter.getRepos()
+        presenter.loadRepositories()
         XCTAssertEqual(presenter.repositories.count, 0)
     }
 }

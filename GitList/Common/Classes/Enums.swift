@@ -8,7 +8,7 @@
 import Foundation
 
 //------------------------------------------------------------
-//    Struct: APIHelper
+//  Struct: APIHelper
 //------------------------------------------------------------
 
 enum ResponseError: Error {

@@ -14,10 +14,9 @@ final class HomeViewController: UIViewController,
                                 UISearchBarDelegate {
     
     var presenter: HomePresenter!
+    
     private lazy var rootView: HomeView = {
-        let view = HomeView()
-        view.setup()
-        view.delegate = self
+        let view = HomeView(delegate: self)
         return view
     }()
     
@@ -57,7 +56,7 @@ final class HomeViewController: UIViewController,
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
-            presenter.getSpecificUser(userName: searchText)
+            presenter.loadUser(userName: searchText)
         }
     }
     
@@ -67,7 +66,7 @@ final class HomeViewController: UIViewController,
     
     func goToDetail(user: User) {
         if let userName = user.login {
-            presenter.getSpecificUser(userName: userName)
+            presenter.loadUser(userName: userName)
         }
     }
     
