@@ -4,9 +4,7 @@ O app consiste em uma lista de usuários do Github, cujo qual no detalhe de cada
 
 ## Instruções
 
-```
 Ao abrir o Xcode, o app irá carregar os packages através do Swift Package Manager, aguardar até o término. Após isso, basta dar play que o app se inicializará, para rodar os testes unitários / interface, já existe uma verificação em Preferences, onde o app identificará que está rodando os testes e trocará a API (Na classe de APIHelper existe uma verificação) pelos Mocks.
-```
 
 ## Requerimentos
 
