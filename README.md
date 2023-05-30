@@ -43,10 +43,6 @@ O projeto possui tratamentos internos para testes unitários e de interface. Par
 <br/><br/>
 <img width="683" alt="TestsSpeed" src="https://github.com/FelipeABastos/GitList/assets/56007862/9d9729c3-7805-4b8c-bf52-e38094be2415">
 
-## Autor
-
-* **Felipe Bastos** 
-
 ## App em funcionamento
 
 ![GIF](https://github.com/FelipeABastos/GitList/assets/56007862/a58c2656-8604-45d9-83ab-cddac2f5b068)
