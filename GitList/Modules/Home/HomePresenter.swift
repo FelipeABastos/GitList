@@ -46,7 +46,9 @@ final class HomePresenter {
                     }
                     self.delegate?.loadedData()
                 }else{
-                    NotificationTopBanner.showMessage(message: error?.message ?? Constants.Messages.UnknownError, type: .warning)
+                    if let errorMessage = error?.message {
+                        NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
+                    }
                 }
             }
         }
@@ -61,7 +63,9 @@ final class HomePresenter {
                 Router.showDetail(user: user)
                 self.delegate?.dismissSearchBar()
             }else{
-                NotificationTopBanner.showMessage(message: error?.message ?? Constants.Messages.UnknownError, type: .warning)
+                if let errorMessage = error?.message {
+                    NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
+                }
                 self.delegate?.dismissSearchBar()
             }
         }

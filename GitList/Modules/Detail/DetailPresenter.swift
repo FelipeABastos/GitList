@@ -31,17 +31,16 @@ final class DetailPresenter {
     }
     
     func getRepos() {
-        
-        guard let login = user.login else { return }
-        
-        delegate?.loading(true)
-        Repository.loadAll(login: login) { result, error in
-            self.delegate?.loading(false)
-            if let items = result {
-                self.repositories = items
-                self.delegate?.loadedData()
-            }else{
-                NotificationTopBanner.showMessage(message: error?.message ?? Constants.Messages.UnknownError, type: .warning)
+        if let login = user.login {
+            delegate?.loading(true)
+            Repository.loadAll(login: login) { result, error in
+                self.delegate?.loading(false)
+                if let items = result {
+                    self.repositories = items
+                    self.delegate?.loadedData()
+                }else{
+                    NotificationTopBanner.showMessage(message: error?.message ?? Constants.Messages.UnknownError, type: .warning)
+                }
             }
         }
     }
