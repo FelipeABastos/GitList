@@ -39,9 +39,10 @@ O projeto possui tratamentos internos para testes unitários e de interface. Par
 
 ## Coverage 94.7%
 
-<img width="874" alt="TestsCoverage" src="https://github.com/FelipeABastos/GitList/assets/56007862/bced5f44-ee42-46b0-9fa4-d76d5be8d052">
-<br/><br/>
-<img width="683" alt="TestsSpeed" src="https://github.com/FelipeABastos/GitList/assets/56007862/9d9729c3-7805-4b8c-bf52-e38094be2415">
+<img width="785" alt="Captura de Tela 2023-05-30 às 18 20 15" src="https://github.com/FelipeABastos/GitList/assets/56007862/2cf5745b-4a92-494f-af66-4318c140a7a4">
+<br/>
+<img width="784" alt="Captura de Tela 2023-05-30 às 18 20 34" src="https://github.com/FelipeABastos/GitList/assets/56007862/b60e28c5-336c-49b2-b7cc-6eec33771967">
+
 
 ## App em funcionamento
 
