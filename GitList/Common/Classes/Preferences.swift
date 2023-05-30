@@ -15,12 +15,16 @@ final class Preferences: NSObject {
     
     //  Is running tests
     
-    static var preferenceIsRunningTests = false
-    
     public static var isRunningTests: Bool {
         get {
             return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil ||
             ProcessInfo.processInfo.arguments.contains("-isTesting")
+        }
+    }
+    
+    public static var isRunningUITests: Bool {
+        get {
+            return ProcessInfo.processInfo.arguments.contains("-isTestingUI")
         }
     }
     

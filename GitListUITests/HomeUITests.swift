@@ -13,28 +13,69 @@ final class HomeUITests: XCTestCase {
     private let app = XCUIApplication()
     
     func launchApp() {
-        app.launchArguments = ["-isTesting"]
+        app.launchArguments = ["-isTesting", "-isTestingUI"]
         app.launch()
     }
     
-    func testFilledList() {
+    func testIfTableViewExists() {
         launchApp()
-        XCTAssertTrue(app.tables.staticTexts["elbowdonkey"].exists)
+        
+        let tableView = app.tables.matching(identifier: "Home_TableView").element
+        
+        XCTAssertTrue(tableView.exists)
     }
     
-    func testCellClicked() {
+    func testIfTableViewIsFilled() {
         launchApp()
-        XCTAssertTrue(app.tables.staticTexts["elbowdonkey"].isHittable)
+        
+        let tableView = app.tables.matching(identifier: "Home_TableView").element
+        let cell = tableView.cells.matching(identifier: "elbowdonkey").element
+        
+        XCTAssertTrue(cell.isHittable)
     }
     
-    func testIsScrollable() {
+    func testIfSearchIsWorking() {
         launchApp()
-        app.swipeUp()
-        XCTAssertTrue(app.tables.cells.containing(.staticText, identifier:"engineyard").element.exists)
+        
+        let navigationBar = app.navigationBars["Usuários"]
+        let searchField = navigationBar.searchFields["Digite o nome do usuário"]
+        
+        searchField.tap()
+        searchField.typeText("elbowdonkey")
+    
+        let searchButton = app.buttons["Search"]
+        searchButton.tap()
     }
     
-    func testIfSearchBarExists() {
+    func testPullToRefresh() {
         launchApp()
-        XCTAssertTrue(XCUIApplication().navigationBars["Usuários"].searchFields["Digite o nome do usuário"].exists)
+        
+        let tableView = app.tables.matching(identifier: "Home_TableView").element
+        let cell = tableView.cells.matching(identifier: "elbowdonkey").element
+        
+        let start = cell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let finish = cell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 60))
+        
+        start.press(forDuration: 0, thenDragTo: finish)
+    }
+    
+    func testIfTableViewIsScrollable() {
+        launchApp()
+        
+        let tableView = app.tables.matching(identifier: "Home_TableView").element
+        tableView.swipeUp()
+        
+        let cell = tableView.cells.element(boundBy: 15)
+        XCTAssertTrue(cell.isHittable)
+    }
+    
+    func testIfNavigationAndSearchBarExists() {
+        launchApp()
+        
+        let navigationBar = app.navigationBars["Usuários"]
+        XCTAssertTrue(navigationBar.isHittable)
+        
+        let searchBar = navigationBar.searchFields["Digite o nome do usuário"]
+        XCTAssertTrue(searchBar.isHittable)
     }
 }

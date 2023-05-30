@@ -55,6 +55,7 @@ final class UserCell: UITableViewCell, ViewCode {
         
         backgroundColor = .clear
         selectionStyle = .none
+        accessibilityIdentifier = item.login?.lowercased()
         
         if let avatar = item.avatar {
             imgIcon.kf.setImage(with: URL(string: avatar))

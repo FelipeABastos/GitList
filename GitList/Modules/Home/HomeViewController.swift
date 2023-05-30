@@ -46,7 +46,7 @@ final class HomeViewController: UIViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter.getUsers()
+        presenter.loadData()
     }
     
     //-----------------------------------------------------------------------
@@ -72,11 +72,11 @@ final class HomeViewController: UIViewController,
     }
     
     func refreshData() {
-        presenter.getUsers(refresh: true)
+        presenter.loadData(refresh: true)
     }
     
     func loadMoreData(since: Int) {
-        presenter.getUsers(refresh: true, since: since)
+        presenter.loadMore(since: since)
     }
     
     func dismissSearchBar() {

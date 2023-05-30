@@ -79,10 +79,14 @@ final class RepositoryCell: UITableViewCell, ViewCode {
         
         vwBadge.backgroundColor = colors.randomElement()
         lblTitle.text = item.name
-        lblStars.text = "\(item.stars ?? 0)"
+        
+        if let stars = item.stars {
+            lblStars.text = "\(stars)"
+        }
         
         backgroundColor = .clear
         selectionStyle = .none
+        accessibilityIdentifier = item.name?.lowercased()
     }
     
     //-----------------------------------------------------------------------

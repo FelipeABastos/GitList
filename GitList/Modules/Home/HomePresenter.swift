@@ -28,28 +28,35 @@ final class HomePresenter {
         self.delegate = delegate
     }
     
-    func getUsers(refresh: Bool = false, since: Int = 0) {
-        
+    func loadData(refresh: Bool = false) {
         if users.isEmpty || refresh {
-            
-            if since == 0 {
-                self.delegate?.loading(true)
+            getUsers { items in
+                self.users = items
+                self.delegate?.loadedData()
             }
-            
-            User.loadAll(since: since) { result, error in
-                self.delegate?.loading(false)
-                if let items = result {
-                    if since != 0 {
-                        self.users += items
-                    }else{
-                        self.users = items
-                    }
-                    self.delegate?.loadedData()
-                }else{
-                    if let errorMessage = error?.message {
-                        NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
-                    }
+        }
+    }
+    
+    func loadMore(since: Int = 0) {
+        if !Preferences.isRunningUITests {
+            getUsers(since: since) { items in
+                self.users.append(contentsOf: items)
+                self.delegate?.loadedData()
+            }
+        }
+    }
+    
+    private func getUsers(since: Int = 0, completion: @escaping (_ items: [User]) -> Void) {
+        self.delegate?.loading(true)
+        User.loadAll(since: since) { result, error in
+            self.delegate?.loading(false)
+            if let items = result {
+                completion(items)
+            }else{
+                if let errorMessage = error?.message {
+                    NotificationTopBanner.showMessage(message: errorMessage, type: .warning)
                 }
+                completion([])
             }
         }
     }

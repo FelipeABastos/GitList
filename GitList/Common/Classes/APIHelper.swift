@@ -27,12 +27,8 @@ final class APIHelper {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
         request.url = URL(string: serverURL)
-        
-        //---------------------------------------------------------
-        //  Running tests
-        //---------------------------------------------------------
-        
-        if Preferences.preferenceIsRunningTests {
+
+        if Preferences.isRunningTests {
             if Preferences.isRunningTestsFail {
                 completion(nil, APIResponseError(documentationUrl: "DocumentationTest", message: "ErrorTest"))
             }else{
@@ -41,32 +37,21 @@ final class APIHelper {
                     completion(parse, nil)
                 }
             }
-            return
-        }
-        
-        //---------------------------------------------------------
-        //  Load API
-        //---------------------------------------------------------
-        
-        DispatchQueue.global().async {
-            let _ = URLSession.shared.dataTask(with: request as URLRequest,
-                                               completionHandler: { data, response, error -> Void in
-                
-                DispatchQueue.main.async {
-                    if let data = data, data.count != 0 {
-                        let responseError = try? JSONDecoder().decode(APIResponseError.self, from: data)
-                        do {
-                            let parse = try JSONDecoder().decode(T.self, from: data)
+        }else{
+            DispatchQueue.global().async {
+                let _ = URLSession.shared.dataTask(with: request as URLRequest,
+                                                   completionHandler: { data, _, _  in
+                    DispatchQueue.main.async {
+                        if let data = data, data.count != 0 {
+                            let responseError = try? JSONDecoder().decode(APIResponseError.self, from: data)
+                            let parse = try? JSONDecoder().decode(T.self, from: data)
                             completion(parse, responseError)
-                        }catch{
-                            print(error)
-                            completion(nil, responseError)
+                        }else{
+                            completion(nil, nil)
                         }
-                    }else{
-                        completion(nil, nil)
                     }
-                }
-            }).resume()
+                }).resume()
+            }
         }
     }
 }

@@ -14,13 +14,13 @@ final class HomeTests: XCTestCase {
     
     func testGetUsersSuccess() {
         Preferences.isRunningTestsFail = false
-        presenter.getUsers()
+        presenter.loadData()
         XCTAssertGreaterThan(presenter.users.count, 0)
     }
     
     func testGetMoreUsersSuccess() {
         Preferences.isRunningTestsFail = false
-        presenter.getUsers(refresh: true, since: 1)
+        presenter.loadMore(since: 1)
         XCTAssertGreaterThan(presenter.users.count, 0)
     }
     
@@ -36,14 +36,14 @@ final class HomeTests: XCTestCase {
     
     func testRefreshSuccess() {
         Preferences.isRunningTestsFail = false
-        presenter.getUsers() // to fill users array
-        presenter.getUsers(refresh: true)
+        presenter.loadData()// to fill users array
+        presenter.loadData(refresh: true)
         XCTAssertGreaterThan(presenter.users.count, 0)
     }
     
     func testGetUsersFail() {
         Preferences.isRunningTestsFail = true
-        presenter.getUsers()
+        presenter.loadData()
         XCTAssertEqual(presenter.users.count, 0)
     }
 }
