@@ -34,9 +34,9 @@ Ao abrir o Xcode, o app irá carregar os packages através do Swift Package Mana
 - Lottie
 - Notification Banner
 ```
-## Coverage (Loading)
+## Coverage 94.7%
 
-
+<img width="874" alt="Captura de Tela 2023-05-30 às 17 00 18" src="https://github.com/FelipeABastos/GitList/assets/56007862/bced5f44-ee42-46b0-9fa4-d76d5be8d052">
 
 ## Autor
 
