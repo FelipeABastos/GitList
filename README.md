@@ -37,6 +37,7 @@ Ao abrir o Xcode, o app irá carregar os packages através do Swift Package Mana
 ## Coverage 94.7%
 
 <img width="874" alt="TestsCoverage" src="https://github.com/FelipeABastos/GitList/assets/56007862/bced5f44-ee42-46b0-9fa4-d76d5be8d052">
+<br/><br/>
 <img width="683" alt="TestsSpeed" src="https://github.com/FelipeABastos/GitList/assets/56007862/9d9729c3-7805-4b8c-bf52-e38094be2415">
 
 ## Autor
