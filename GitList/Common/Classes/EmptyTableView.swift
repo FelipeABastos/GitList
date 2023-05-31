@@ -11,7 +11,7 @@ final class EmptyTableView: UIStackView, ViewCode{
     
     private lazy var imgGit: UIImageView = {
         let image = UIImageView()
-        image.accessibilityIdentifier = "EmptyGitImage"
+        image.accessibilityIdentifier = Constants.AccessibilityIdentifier.EmptyTableView.Image
         image.image = UIImage(named: "GithubIcon")
         image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFit
@@ -21,9 +21,9 @@ final class EmptyTableView: UIStackView, ViewCode{
     
     private lazy var lblInfo: UILabel = {
         let label = UILabel()
-        label.accessibilityIdentifier = "EmptyLabel"
+        label.accessibilityIdentifier = Constants.AccessibilityIdentifier.EmptyTableView.Title
         label.textColor = UIColor(named: "Gray")
-        label.text = "Lista vazia"
+        label.text = Constants.Messages.EmptyList
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

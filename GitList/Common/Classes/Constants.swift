@@ -47,6 +47,11 @@ final class Constants {
             static let StarLabel = "RepositoryCell_StarLabel"
         }
         
+        struct EmptyTableView {
+            static let Image = "EmptyTableView_Image"
+            static let Title = "EmptyTableView_Title"
+        }
+        
         struct Detail {
             static let AvatarImage = "Detail_AvatarImage"
             static let NameLabel = "Detail_NameLabel"
@@ -63,5 +68,6 @@ final class Constants {
     
     struct Messages {
         static let UnknownError = "Ops! Algo aconteceu, tente novamente mais tarde."
+        static let EmptyList = "Lista vazia!"
     }
 }
