@@ -62,6 +62,10 @@ final class HomeView: UIView,
         users = data
         tbList.reloadData()
 
+        if data.count == 0 {
+            tbList.backgroundView = EmptyTableView()
+        }
+        
         refreshControl.endRefreshing()
     }
     

@@ -47,6 +47,7 @@
 		B2EC70D62A242AF90064CA5B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B2EC70D52A242AF90064CA5B /* Lottie */; };
 		B2EC70D82A242B4D0064CA5B /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B2EC70D72A242B4D0064CA5B /* loading.json */; };
 		B2EC70DB2A242BEE0064CA5B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EC70DA2A242BEE0064CA5B /* UserCell.swift */; };
+		B2F7B04D2A26D37C005EA3D4 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F7B04C2A26D37C005EA3D4 /* EmptyTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		B2EC70D72A242B4D0064CA5B /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		B2EC70DA2A242BEE0064CA5B /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B2EC70DF2A2432B20064CA5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2F7B04C2A26D37C005EA3D4 /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				B2C6D85C2A2425A10040F941 /* NotificationTopBanner.swift */,
 				B2EC70D22A2428A40064CA5B /* Loader.swift */,
 				B238EB2C2A2520ED001F0BAF /* Preferences.swift */,
+				B2F7B04C2A26D37C005EA3D4 /* EmptyTableView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				B238EB302A252144001F0BAF /* Mock.swift in Sources */,
 				B238EB212A2500A1001F0BAF /* DetailRouter.swift in Sources */,
 				B2C6D8472A23DFE70040F941 /* ViewCode.swift in Sources */,
+				B2F7B04D2A26D37C005EA3D4 /* EmptyTableView.swift in Sources */,
 				B2EC70DB2A242BEE0064CA5B /* UserCell.swift in Sources */,
 				B2C6D8412A23DDD90040F941 /* HomeRouter.swift in Sources */,
 				B2C6D8392A23D9C70040F941 /* Router.swift in Sources */,

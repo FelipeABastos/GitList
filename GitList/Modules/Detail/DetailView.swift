@@ -70,9 +70,7 @@ final class DetailView: UIView,
         setup()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     //-----------------------------------------------------------------------
     //  MARK: - Custom Methods -
@@ -83,6 +81,10 @@ final class DetailView: UIView,
         self.repositories = repositories
         
         tbList.reloadData()
+        
+        if repositories.count == 0 {
+            tbList.backgroundView = EmptyTableView()
+        }
         
         if let avatar = user.avatar {
             imgAvatar.kf.setImage(with: URL(string: avatar))
